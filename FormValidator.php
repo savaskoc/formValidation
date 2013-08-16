@@ -118,20 +118,3 @@ class FormValidator
         return !$errors ? true : $errors;
     }
 }
-
-$data = array('name' => 'Savaş', 'surname' => '', 'age' => 'foo');
-$rules = array(
-    'name' => array('maxlen(10)'),
-    'surname' => array('required'),
-    'age' => array('int', 'max(18)')
-);
-
-$validator = new FormValidator();
-
-$validator->addErrorMessage('required', '%s zorunlu');
-
-$status = $validator->isValid($data, $rules);
-if ($status === true)
-    echo 'VALID!';
-else
-    echo "NOT VALID!\n" . implode("\n", $status);
